@@ -1,16 +1,29 @@
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import Routes from 'routes';
+import './index.scss';
+
+const theme = extendTheme({
+  sizes: {
+    container: {
+      xl: '100%',
+      lg: '80%',
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
